@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Coffee Shops Ratings in the City of Los Angeles</title>
+    <style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		#title {
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 20px;
+			z-index: 5;
+			width: 800px;
+			font-family: 'Helvetica Neue', 'Helvetica', 'sans-serif';
+			font-weight: 300;
+			font-size: 25px;
+			text-align: center;
+			background-color: rgba(255,255,255,0.8);
+			border-radius: 0 0 20px 20px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.5);
+		}
+		#map_canvas {
+			height: 100%;
+		}
+	</style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+
+      function initialize() {
+        var mapOptions = {
+          zoom: 11,
+          center: new google.maps.LatLng(34.0522, -118.2428),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        
+        // These next two lines show how to include a KML layer in your web map.
+        // Hint:  Place your KML file on your BOL webspace, and refer to it from the line defining the 
+        //        variable
+       	var colonias = new google.maps.KmlLayer('http://nanhed23.bol.ucla.edu/week5/restaurantratingsinla.kmz');
+		colonias.setMap(map);
+      }
+	  
+	  /* 
+		I chose "Equal Interval" as the method of map classification because the entire range of data values (max - min) can be divided equally
+		 which means that it is easier for anyone to compare the values between the data classes. It is also easier for the map maker to define
+		 where the breaks should be.
+	  */
+    </script>
+  </head>
+  <body onload="initialize()">
+  	<div id="title">Coffee Shops Ratings in the City of Los Angeles</div>
+    <div id="map_canvas"></div>
+	
+	<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+  dl {width: 20em; }
+  dt {
+    float: left;
+    clear: left;
+    width: 5%;
+    height: 20px;
+    display: inline-block;
+    overflow: hidden;
+    border: 1px solid #000;
+    line-height: 20px;
+    margin: 0 0 0.5em 0;
+}
+.lightyellow {background-color: #FFFEE3; color: #FFFEE3; }
+.lemonchiffon3 {background-color: #D9CC98; color: #D9CC98; }
+.khaki4 {background-color: #9C865C; color: #9C865C; }
+.gray32 {background-color: #635038; color: #635038; }
+.gray14 {background-color: #332418; color: #332418; }
+
+dd {
+    float: left;
+    clear: right;
+    width: 90%;
+    margin: 0 0 0 4%;
+    line-height: 20px;
+}
+	//creating the legend
+
+</style>
+</head>
+<body>
+  
+<h2>MAP LEGEND</h2>  
+<dl>
+<dt class="lightyellow"></dt>
+<dd>Scores of 90.00 - 92.00</dd>
+<dt class="lemonchiffon3"></dt>
+<dd>Scores of 92.01 - 94.00</dd>
+<dt class="khaki4"></dt>
+<dd>Scores of 94.01 - 96.00</dd>
+<dt class="gray32"></dt>
+<dd>Scores of 96.01 - 98.00</dd>
+<dt class="gray14"></dt>
+<dd>Scores of 98.01 - 100.00</dd>
+</dl>
+  
+  
+  
+  </body>
+</html>
